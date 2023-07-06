@@ -52,11 +52,9 @@ class QuizInterface:
 
     def select_true(self):
         self.return_feedback(self.quiz.check_answer("True"))
-        #self.get_next_question()
 
     def select_false(self):
         self.return_feedback(self.quiz.check_answer("False"))
-        #self.get_next_question()
 
     def get_next_question(self):
         if self.quiz.still_has_questions():
@@ -67,6 +65,8 @@ class QuizInterface:
         else:
             self.canvas.config(bg=WHITE)
             self.canvas.itemconfig(self.question_text, text="You've reached the end of the quiz.")
+            self.true_button.config(state="disabled")
+            self.false_button.config(state="disabled")
 
     def return_feedback(self, is_correct):
         if is_correct:
